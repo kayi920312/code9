@@ -1,4 +1,4 @@
-package serialClone;
+package v2ch01.serialClone;
 
 /**
    @version 1.20 17 Aug 1998
@@ -97,7 +97,8 @@ class Employee extends SerialCloneable
    public String toString()
    {  
       return getClass().getName()
-         + "[name=" + name
+         + "[code="+ this.hashCode()
+         + ",name=" + name
          + ",salary=" + salary
          + ",hireDay=" + hireDay
          + "]";

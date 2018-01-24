@@ -1,4 +1,4 @@
-package objectStream;
+package v2ch01.objectStream;
 
 import java.io.*;
 
@@ -23,12 +23,12 @@ class ObjectStreamTest
       staff[2] = tony;
 
       // save all employee records to the file employee.dat         
-      try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("employee.dat"))) 
+      try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("D:\\employee.txt"))) 
       {
          out.writeObject(staff);
       }
 
-      try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("employee.dat")))
+      try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("D:\\employee.txt")))
       {
          // retrieve all records into a new array
          

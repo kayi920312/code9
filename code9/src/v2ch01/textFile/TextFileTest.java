@@ -1,4 +1,4 @@
-package textFile;
+package v2ch01.textFile;
 
 import java.io.*;
 import java.util.*;

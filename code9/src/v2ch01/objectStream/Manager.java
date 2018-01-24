@@ -1,4 +1,4 @@
-package objectStream;
+package v2ch01.objectStream;
 
 public class Manager extends Employee
 {
@@ -29,6 +29,6 @@ public class Manager extends Employee
 
    public String toString()
    {
-      return super.toString() + "[secretary=" + secretary + "]";
+      return super.toString() + "[secretary=" + secretary.hashCode() +":"+ secretary + "]";
    }
 }
