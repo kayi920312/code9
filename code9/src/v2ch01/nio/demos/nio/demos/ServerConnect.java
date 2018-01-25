@@ -66,10 +66,12 @@ public class ServerConnect
             ssc.register(selector, SelectionKey.OP_ACCEPT);
  
             while(true){
-                if(selector.select(TIMEOUT) == 0){
+               
+            	if(selector.select(TIMEOUT) == 0){
                     System.out.println("==");
                     continue;
                 }
+            	
                 Iterator<SelectionKey> iter = selector.selectedKeys().iterator();
                 while(iter.hasNext()){
                     SelectionKey key = iter.next();
