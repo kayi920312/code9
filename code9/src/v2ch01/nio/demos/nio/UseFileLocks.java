@@ -14,6 +14,7 @@ public class UseFileLocks
     RandomAccessFile raf = new RandomAccessFile( "usefilelocks.txt", "rw" );
     FileChannel fc = raf.getChannel();
 
+    
     // Get lock
     System.out.println( "trying to get lock" );
     FileLock lock = fc.lock( start, end, false );
