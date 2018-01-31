@@ -24,7 +24,7 @@ public class ServerConnect
         ServerSocketChannel ssChannel = (ServerSocketChannel)key.channel();
         SocketChannel sc = ssChannel.accept();
         sc.configureBlocking(false);
-        sc.register(key.selector(), SelectionKey.OP_READ,ByteBuffer.allocateDirect(BUF_SIZE));
+        sc.register(key.selector(), SelectionKey.OP_READ, ByteBuffer.allocateDirect(BUF_SIZE));
     }
  
     public static void handleRead(SelectionKey key) throws IOException{
@@ -43,12 +43,15 @@ public class ServerConnect
         if(bytesRead == -1){
             sc.close();
         }
+//        handleWrite(key);
     }
  
     public static void handleWrite(SelectionKey key) throws IOException{
+    	SocketChannel sc = (SocketChannel) key.channel();
         ByteBuffer buf = (ByteBuffer)key.attachment();
         buf.flip();
-        SocketChannel sc = (SocketChannel) key.channel();
+        buf.clear();
+        buf.put("给你个回复".getBytes());
         while(buf.hasRemaining()){
             sc.write(buf);
         }
@@ -60,6 +63,7 @@ public class ServerConnect
         ServerSocketChannel ssc = null;
         try{
             selector = Selector.open();
+            
             ssc= ServerSocketChannel.open();
             ssc.socket().bind(new InetSocketAddress(PORT));
             ssc.configureBlocking(false);
@@ -68,7 +72,7 @@ public class ServerConnect
             while(true){
                
             	if(selector.select(TIMEOUT) == 0){
-                    System.out.println("==");
+                    System.out.println("未有客户端连接==");
                     continue;
                 }
             	

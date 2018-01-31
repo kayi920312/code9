@@ -2,12 +2,13 @@
 package v2ch01.nio.demos.nio;
 
 import java.nio.*;
+import java.nio.channels.ServerSocketChannel;
 
 public class UseFloatBuffer
 {
 	static public void main(String args[]) throws Exception {
 		FloatBuffer buffer = FloatBuffer.allocate(10);
-
+		ByteBuffer bu = ByteBuffer.allocateDirect(1024);
 		System.out.println("postition: "+buffer.position()+", limit: "+buffer.limit());
 		for (int i = 0; i < buffer.capacity(); ++i) {
 			float f = (float) Math.sin((((float) i) / 10) * (2 * Math.PI));
@@ -25,5 +26,6 @@ public class UseFloatBuffer
 			float f = buffer.get();
 			System.out.println(f);
 		}
+		
 	}
 }

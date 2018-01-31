@@ -1,4 +1,4 @@
-package inetAddress;
+package v2ch03.inetAddress;
 
 import java.io.*;
 import java.net.*;

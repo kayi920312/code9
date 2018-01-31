@@ -1,4 +1,4 @@
-package urlConnection;
+package v2ch03.urlConnection;
 
 import java.io.*;
 import java.net.*;

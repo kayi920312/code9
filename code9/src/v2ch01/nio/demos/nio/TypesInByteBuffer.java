@@ -9,7 +9,7 @@ public class TypesInByteBuffer
 
     buffer.putInt( 30 );
     buffer.putLong( 7000000000000L );
-    buffer.putDouble( Math.PI );
+    buffer.putDouble( Math.PI*Math.PI );
 
     buffer.flip();
 

@@ -1,11 +1,19 @@
-package mail;
+package v2ch03.mail;
 
-import java.io.*;
-import java.nio.charset.*;
-import java.nio.file.*;
-import java.util.*;
-import javax.mail.*;
-import javax.mail.internet.*;
+import java.io.Console;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.Properties;
+
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMessage.RecipientType;
 
 /**
@@ -18,10 +26,12 @@ public class MailTest
    public static void main(String[] args) throws MessagingException, IOException
    {
       Properties props = new Properties();
-      try (InputStream in = Files.newInputStream(Paths.get("mail", "mail.properties")))
+      try (InputStream in = Files.newInputStream(Paths.get("mail","mail.properties")))
       {
          props.load(in);
-      }
+      }catch (Exception e) {
+    	  e.printStackTrace();
+	}
       List<String> lines = Files.readAllLines(Paths.get(args[0]), Charset.forName("UTF-8"));
        
       String from = lines.get(0);

@@ -24,7 +24,6 @@ public class CopyFile {
 
 		while (true) {
 			buffer.clear();
-			buffer.compact();
 			int r = fcin.read(buffer);
 
 			if (r == -1) {

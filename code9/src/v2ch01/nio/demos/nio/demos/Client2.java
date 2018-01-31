@@ -28,7 +28,7 @@ public class Client2 {
                 int i=0;
                 while(true)
                 {
-                    TimeUnit.SECONDS.sleep(1);
+                    TimeUnit.SECONDS.sleep(3);
                     String info = "I'm "+i+++"-th information from client";
                     buffer.clear();
                     buffer.put(info.getBytes());
@@ -37,10 +37,32 @@ public class Client2 {
                         System.out.println(buffer);
                         socketChannel.write(buffer);
                     }
+                    
+                    socketChannel.read(buffer);
+                    buffer.flip();
+                    while(buffer.hasRemaining()){
+                    	System.out.print((char)buffer.get());
+                    }
                 }
             }
+            
+            /*if(socketChannel.finishConnect())
+            {
+                String info = "I'm information from client";
+                buffer.clear();
+                buffer.put(info.getBytes());
+                buffer.flip();
+                while(buffer.hasRemaining()){
+                	socketChannel.write(buffer);
+                }
+                
+                socketChannel.read(buffer);
+                while(buffer.hasRemaining()){
+                	System.out.print((char)buffer.get());
+                }
+            }*/
         }
-        catch (IOException | InterruptedException e)
+        catch (Exception e)
         {
             e.printStackTrace();
         }
